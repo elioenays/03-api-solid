@@ -5,7 +5,7 @@ import { LateCheckInValidationError } from './errors/late-check-in-validation-er
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface ValidateCheckInUseCaseRequest {
-  checkinId: string
+  checkInId: string
 }
 
 interface ValidateCheckInUseCaseResponse {
@@ -16,9 +16,9 @@ export class ValidateCheckInUseCase {
   constructor(private readonly checkInsRepository: CheckInsRepository) {}
 
   async execute({
-    checkinId,
+    checkInId,
   }: ValidateCheckInUseCaseRequest): Promise<ValidateCheckInUseCaseResponse> {
-    const checkIn = await this.checkInsRepository.findById(checkinId)
+    const checkIn = await this.checkInsRepository.findById(checkInId)
 
     if (!checkIn) {
       throw new ResourceNotFoundError()

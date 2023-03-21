@@ -26,7 +26,7 @@ describe('Validate Check In Use Case', () => {
     })
 
     const { checkIn } = await sut.execute({
-      checkinId: createdCheckIn.id,
+      checkInId: createdCheckIn.id,
     })
 
     expect(checkIn.validated_at).toEqual(expect.any(Date))
@@ -36,7 +36,7 @@ describe('Validate Check In Use Case', () => {
   it('should not be able to validate an inexistent ckeck-in', async () => {
     await expect(() =>
       sut.execute({
-        checkinId: 'inexisted-check-in-id',
+        checkInId: 'inexisted-check-in-id',
       }),
     ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
@@ -55,7 +55,7 @@ describe('Validate Check In Use Case', () => {
 
     await expect(() =>
       sut.execute({
-        checkinId: createdCheckIn.id,
+        checkInId: createdCheckIn.id,
       }),
     ).rejects.toBeInstanceOf(LateCheckInValidationError)
   })
