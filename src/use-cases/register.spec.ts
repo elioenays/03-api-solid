@@ -44,7 +44,7 @@ describe('Register Use Case', () => {
     ).rejects.toBeInstanceOf(UserAlreadyExistsError)
   })
 
-  it('should not be able to register', async () => {
+  it('should to register', async () => {
     const { user } = await sut.execute({
       name: 'John Doe',
       email: 'johndoe@teste.com',
